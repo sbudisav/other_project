@@ -1,0 +1,39 @@
+1. Parser  (checked!)
+	-Go, Look, Talk, ignore all other commands.
+	-Keep taking input until user quits
+	-Can take 3 word commands for "go to" or "take the" 
+	-Will ignore the to, the, in-between non action commands etc
+2. Locations
+	-Linked by direction.
+	-Can go by compass or name directly 
+	-Can not skip across (will add item skips later) 
+	-Adjacent locations can be stored in a hash with tags (North, South, East, West) 
+	-Secret locations can be stored in new "go" tag (cave, waterfall, etc)
+3. Characters/Items
+	-Items in inventory for all characters 
+	-Characters have dialog
+	-Characters can be in a location, and can move locations
+	-Locations and Character locations should be linked somehow (look into)
+
+
+
+
+
+some commands move forward through the string, others do not. 
+Move forward position pointer (getch, scan), while others don’t (peek)
+So for parsing sake it looks like I will need to use getch or scan 
+
+Getch only scans one character at a time, thats no good as I'm looking to get whole words
+lets investigate inspect() it looks like it could be great for debugging
+ 
+REGEX coming at cha
+(/\w+/) will check the whole word when scanned
+
+Okay okay maybe going back to split, working with arrays might make it easier. Also if input is to long thats easy to check for
+
+input_raw = string.split(/\W+/)
+this automatically gets rid of extra whitespace (neat!)
+
+----------- 9/10/18------------
+
+Going to try and get the locations going today. Ideally something like a linked list where you can only go to a location if they are connected in some way. Ideally I would like to see some secret passages but for now immediate commas direction should do me just fine. 
